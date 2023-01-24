@@ -8,8 +8,8 @@ spec:
   containers:
   - name: kaniko
     image: gcr.io/kaniko-project/executor:debug
-    args: ["--context=git://github.com/vfarcic/kaniko-demo",
-            "--destination=vfarcic/devops-toolkit:1.0.0"]
+    args: ["--context=git://github.com/pythoninthegrass/kaniko_demo",
+            "--destination=jollygoodhorsepower/kaniko-demo-image:latest"]
     volumeMounts:
       - name: kaniko-secret
         mountPath: /kaniko/.docker
