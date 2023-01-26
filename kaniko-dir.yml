@@ -1,0 +1,41 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kaniko
+spec:
+  restartPolicy: Never
+  containers:
+    - name: kaniko
+      readinessProbe:
+        exec:
+          command:
+            - cat
+            - /workspace/dockerfile
+        initialDelaySeconds: 1
+        periodSeconds: 5
+      image: gcr.io/kaniko-project/executor:latest
+      args:
+        [
+          "--dockerfile=/workspace/dockerfile",
+          "--context=dir://workspace",
+          "--destination=jollygoodhorsepower/kaniko-demo-image:latest",
+        ]
+      volumeMounts:
+      - name: kaniko-secret
+        mountPath: /kaniko/.docker
+      - name: dockerfile-source
+        mountPath: /workspace
+  volumes:
+  - name: kaniko-secret
+    secret:
+      secretName: regcred
+      items:
+      - key: .dockerconfigjson
+        path: config.json
+  - name: dockerfile-source
+    configMap:
+      name: dockerfile-configmap
+      items:
+      - key: dockerfile
+        path: dockerfile
