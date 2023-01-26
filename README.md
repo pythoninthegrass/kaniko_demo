@@ -87,13 +87,13 @@ Combines [Kaniko - Building Container Images In Kubernetes Without Docker](https
 
 ## TODO
 * Add [Dockerfile](Dockerfile) instead of using [ConfigMap](configmap.yml) in [kaniko-dir.yml](kaniko-dir.yml)
-* Get [nginx-flask-mongo](https://github.com/docker/awesome-compose/tree/master/nginx-flask-mongo) up and running (removed Hugo example)
+* Create justfile
 
 ## Further Reading
 [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
 
+[tiangolo/uwsgi-nginx-flask-docker](https://github.com/tiangolo/uwsgi-nginx-flask-docker)
+
 [Secrets](https://kubernetes.io/docs/tasks/configmap-secret/managing-secret-using-kubectl/)
 
 [ConfigMaps](https://kubernetes.io/docs/concepts/configuration/configmap/)
-
-
